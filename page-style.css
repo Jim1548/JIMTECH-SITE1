@@ -1,0 +1,1386 @@
+﻿/* ------------------ VARIABLES ------------------ */
+:root {
+    --color-dark-blue: #0A192F; /* Fond de l'en-tÃªte et du Hero */
+    --color-accent-cyan: #64FFDA; /* Couleur d'accentuation (boutons, survol) */
+    --color-light: #F0F2F5; /* Texte principal */
+    --color-charcoal: #121212; /* Fond gÃ©nÃ©ral trÃ¨s sombre */
+    --color-card-bg: #21213e; /* Fond des cartes (services/actus) */
+    --color-bg-secondary: #1a1a2e; /* Fond des sections secondaires */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Arial', sans-serif;
+}
+
+/* ------------------ BASE & RESET ------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-light); 
+    background-color: var(--color-charcoal); 
+    padding-top: 70px; /* Pour laisser de l'espace au header fixe */
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-light);
+}
+
+/* ------------------ EN-TÃTE ET NAVIGATION ------------------ */
+.main-header {
+    background-color: var(--color-dark-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    
+    /* MODIFICATION ICI : Remplacer 'fixed' par 'static' ou 'relative' */
+    position: static; /* OU position: relative; */ 
+    
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--color-accent-cyan);
+    display: flex;
+    align-items: center;
+}
+
+.logo i {
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav a {
+    color: var(--color-light);
+    margin-left: 25px;
+    padding: 5px 0;
+    transition: color 0.3s, border-bottom 0.3s;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.main-nav a:hover {
+    color: var(--color-accent-cyan);
+    border-bottom: 2px solid var(--color-accent-cyan);
+}
+
+.menu-toggle {
+    display: none; /* MasquÃ© sur le bureau */
+}
+
+/* ------------------ FOOTER ------------------ */
+.main-footer {
+    background-color: #000; 
+    color: #fff;
+    padding: 50px 5% 20px;
+    border-top: 3px solid var(--color-accent-cyan); 
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+}
+
+.footer-col {
+    width: 30%;
+}
+
+.footer-col.about {
+    width: 40%;
+}
+
+.footer-col h3 {
+    color: var(--color-accent-cyan);
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.footer-col p {
+    margin-top: 15px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col a {
+    color: #ccc;
+    text-decoration: none;
+    line-height: 2.2;
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: var(--color-accent-cyan);
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    font-size: 1.5em;
+    margin-right: 15px;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* ------------------ BOUTONS (CTA) ------------------ */
+
+.btn {
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    margin-right: 15px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background-color: var(--color-accent-cyan);
+    color: var(--color-dark-blue);
+    border: 2px solid var(--color-accent-cyan);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-accent-cyan);
+}
+
+.btn-ghost {
+    background-color: transparent;
+    color: var(--color-accent-cyan);
+    border: 2px solid var(--color-accent-cyan);
+}
+
+.btn-ghost:hover {
+    background-color: var(--color-accent-cyan);
+    color: var(--color-dark-blue);
+}
+
+/* ------------------ SECTIONS COMMUNES ------------------ */
+section {
+    padding: 80px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--color-accent-cyan);
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* ------------------ SECTION HERO ------------------ */
+
+/* ---------------------------------------------------- */
+/* 1. Conteneur principal (La section visible)           */
+/* ---------------------------------------------------- */
+.hero-section {
+    background-color: var(--color-dark-blue);
+    
+    /* â RETIRER : background-image, background-size, background-position ici */
+
+    padding: 150px 5% 100px; 
+    text-align: left;
+    min-height: 80vh; 
+    display: flex;
+    align-items: center;
+    
+    /* ð CLÃ : NÃ©cessaire pour positionner le ::before */
+    position: relative; 
+    
+    /* ð CLÃ : S'assurer que le contenu (texte) est au-dessus du pseudo-Ã©lÃ©ment */
+    z-index: 1; 
+}
+
+/* ---------------------------------------------------- */
+/* 2. Le Pseudo-Ã©lÃ©ment (Contient l'image de fond)      */
+/* ---------------------------------------------------- */
+.hero-section::before {
+    content: ""; /* Obligatoire */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* ð CLÃ : Pour placer l'image derriÃ¨re le contenu textuel */
+    z-index: -1; 
+
+    /* RÃ-AJOUT de l'image de fond et de son style */
+    background-image: url('../img/background.png');
+    background-size: cover; /* Garder 'cover' pour remplir la zone */
+    background-position: center 20%;
+    background-repeat: no-repeat;
+    
+    /* ð¥ LA LIGNE CLÃ POUR LA SYMÃTRIE HORIZONTALE ð¥ */
+   /* transform: scaleX(-1); */
+}
+
+.subheading {
+    color: var(--color-accent-cyan);
+    font-size: 1.1em;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    display: block;
+    text-transform: uppercase;
+}
+
+.main-title {
+    font-family: var(--font-heading);
+    font-size: 3.5em; 
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--color-light);
+}
+
+.tagline {
+    font-size: 1.2em;
+    color: #A9B2C3; 
+    margin-bottom: 30px;
+}
+
+/* ------------------ SECTION SERVICES (2) ------------------ */
+.services-section {
+    background-color: var(--color-bg-secondary);
+    display: flex;
+    gap: 30px; 
+    justify-content: center;
+}
+
+.service-card {
+    background-color: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    width: 30%; 
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    border: 1px solid #333; 
+}
+
+.service-card i {
+    font-size: 2.5em;
+    color: var(--color-accent-cyan);
+    margin-bottom: 15px;
+}
+
+.service-card h2 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: var(--color-light);
+    font-family: var(--font-heading);
+}
+
+.service-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); 
+}
+
+/* ------------------ SECTION ACTUALITÃS (3) ------------------ */
+.latest-news-preview {
+    background-color: var(--color-charcoal);
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.news-item {
+    background-color: var(--color-bg-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    transition: border 0.3s;
+    border-left: 5px solid var(--color-dark-blue);
+}
+
+.news-item:hover {
+    border-left: 5px solid var(--color-accent-cyan);
+}
+
+.news-item h3 {
+    color: var(--color-light);
+    font-family: var(--font-heading);
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.news-item p {
+    color: #ccc;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.news-item a {
+    color: var(--color-accent-cyan);
+    font-weight: bold;
+    display: inline-block;
+}
+
+
+/* ------------------ RESPONSIVE DESIGN ------------------ */
+
+/* Tablette et Mobile */
+@media (max-width: 900px) {
+    
+    /* Navigation - Masquer le menu complet, afficher le toggle */
+    .main-nav {
+        display: none; 
+    }
+    .menu-toggle {
+        display: block; 
+    }
+    
+    /* Hero Section */
+    .hero-section {
+        padding-top: 100px;
+        min-height: auto; /* Laisser le contenu dÃ©finir la hauteur */
+    }
+    .main-title {
+        font-size: 2.5em;
+    }
+    .hero-buttons a {
+        margin-bottom: 10px;
+    }
+    
+    /* Sections Services */
+    .services-section {
+        flex-direction: column; /* Les cartes s'empilent */
+        align-items: center;
+    }
+    .service-card {
+        width: 100%;
+        max-width: 400px; /* Limiter la largeur en empilement pour la lisibilitÃ© */
+    }
+    
+    /* Footer */
+    .footer-container {
+        flex-direction: column;
+    }
+    .footer-col {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .footer-col.about {
+        width: 100%;
+    }
+}
+
+/* AJOUTER Ã LA FIN DE style.css */
+
+/* ------------------ NOUVEAUTÃS CSS POUR JS ------------------ */
+
+/* 1. Style pour l'effet de dÃ©filement du header */
+.main-header.scrolled {
+    background-color: rgba(10, 25, 47, 0.95); /* Rendre le fond lÃ©gÃ¨rement transparent */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7); /* Ombre plus marquÃ©e */
+    backdrop-filter: blur(5px); /* Optionnel : effet de flou derriÃ¨re le header */
+}
+
+/* 2. Styles pour le Menu Mobile (Burger) */
+@media (max-width: 900px) {
+    /* Rendre le bouton toggle visible */
+    .menu-toggle {
+        display: block;
+        z-index: 1001; /* Assurer qu'il est au-dessus de tout */
+    }
+
+    /* Styles par dÃ©faut de la navigation mobile (masquÃ©e) */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color-dark-blue);
+        transform: translateX(100%); /* Masquer le menu hors de l'Ã©cran (Ã  droite) */
+        transition: transform 0.4s ease-in-out;
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Ãtat actif (Menu visible) */
+    .main-nav.active {
+        transform: translateX(0); /* Afficher le menu */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .main-nav li {
+        margin: 20px 0;
+    }
+    
+    .main-nav a {
+        font-size: 1.5em;
+        margin-left: 0;
+    }
+}
+
+/* ----------------------------------------------------------- */
+/* 9. PAGE CONTACT (contact.php)             */
+/* ----------------------------------------------------------- */
+
+.contact-section {
+    padding-top: 50px; /* Moins d'espace au-dessus du titre */
+}
+
+/* --- Layout de la Page --- */
+.contact-layout {
+    display: flex;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 50px auto 100px;
+}
+
+.contact-form-container {
+    width: 60%;
+    background-color: var(--color-bg-secondary);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.contact-info-container {
+    width: 40%;
+}
+
+.contact-form-container h2 {
+    color: var(--color-light);
+    margin-bottom: 10px;
+}
+
+.form-tagline {
+    color: #aaa;
+    margin-bottom: 30px;
+    font-size: 0.95em;
+}
+
+/* --- Style du Formulaire --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    color: var(--color-accent-cyan);
+    margin-bottom: 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-dark-blue);
+    border: 1px solid #334455;
+    color: var(--color-light);
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-size: 1em;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--color-accent-cyan);
+    box-shadow: 0 0 5px rgba(100, 255, 218, 0.6);
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+/* --- Style des Informations (Info Boxes) --- */
+.info-box {
+    background-color: var(--color-card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--color-accent-cyan);
+    transition: transform 0.3s;
+}
+
+.info-box:hover {
+    transform: translateY(-3px);
+}
+
+.info-box i {
+    color: var(--color-accent-cyan);
+    margin-bottom: 15px;
+}
+
+.info-box h3 {
+    color: var(--color-light);
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.info-box p {
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.info-link {
+    color: var(--color-accent-cyan);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.info-link:hover {
+    text-decoration: underline;
+}
+
+/* ----------------------------------------------------------- */
+/* RESPONSIVE pour la Page Contact */
+/* ----------------------------------------------------------- */
+
+@media (max-width: 900px) {
+    .contact-layout {
+        flex-direction: column;
+        margin: 30px auto 50px;
+    }
+    
+    .contact-form-container,
+    .contact-info-container {
+        width: 100%;
+    }
+}
+
+
+/* ----------------------------------------------------------- */
+/* 10. PAGE ACTUALITÃS (articles.php)         */
+/* ----------------------------------------------------------- */
+/* Le Hero de la page ActualitÃ©s */
+.page-hero {
+    /* ð¨ CORRECTION 1 : Utilisation du FOND BLEU DE NUIT principal */
+    background-color: var(--color-dark-blue); 
+    
+    /* Espacement gÃ©nÃ©reux, cohÃ©rent avec le Hero de l'index */
+    padding: 100px 5% 70px; 
+    
+    text-align: center;
+    border-bottom: 3px solid var(--color-accent-cyan);
+    margin-bottom: 60px; 
+}
+
+.page-hero h1 {
+    font-family: var(--font-heading);
+    font-size: 2.8em;
+    
+    /* ð¨ CORRECTION 2 : Le titre utilise la couleur d'accentuation (Vert vif) */
+    color: var(--color-accent-cyan);
+    
+    margin-bottom: 15px;
+}
+
+.page-hero p {
+    color: var(--color-light); /* Le sous-titre est en blanc */
+    font-size: 1.1em;
+}
+
+.articles-section {
+    /* Le fond de la section est toujours le fond gÃ©nÃ©ral */
+    background-color: var(--color-charcoal); 
+    padding-top: 50px;
+    padding-bottom: 80px;
+}
+
+/* --- Grille des Articles --- */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.news-full-item {
+    /* Utilise la couleur de fond des cartes #21213e */
+    background-color: var(--color-card-bg); 
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    border: 1px solid var(--color-bg-secondary);
+    border-top: 5px solid var(--color-bg-secondary); 
+}
+
+.news-full-item:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    border-top-color: var(--color-accent-cyan);
+}
+
+.news-content-wrapper {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.news-tag {
+    /* Le tag doit Ãªtre dans la couleur d'accentuation */
+    background-color: var(--color-accent-cyan);
+    color: var(--color-dark-blue); 
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.news-full-item h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6em;
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.news-full-item h2 a {
+    color: var(--color-light);
+    transition: color 0.3s;
+}
+
+.news-full-item h2 a:hover {
+    color: var(--color-accent-cyan);
+}
+
+.article-summary {
+    color: #ccc;
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1; 
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-bg-secondary); 
+    padding-top: 15px;
+    font-size: 0.9em;
+    margin-top: auto; 
+}
+
+.article-date {
+    color: #888;
+}
+
+.article-date i {
+    margin-right: 5px;
+    color: var(--color-accent-cyan);
+}
+
+.read-more {
+    color: var(--color-accent-cyan);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* --- RESPONSIVE : Ajustement de la grille sur petit Ã©cran --- */
+@media (max-width: 600px) {
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ----------------------------------------------------------- */
+/* 10.6. PAGE PUBLICATIONS (publications.php)                   */
+/* ----------------------------------------------------------- */
+
+.publications-section {
+    background-color: var(--color-charcoal); 
+    padding-top: 50px;
+    padding-bottom: 80px;
+}
+
+/* --- Grille des Documents (Identique Ã  la grille des articles) --- */
+.documents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Style de la Carte de Document --- */
+.document-item {
+    background-color: var(--color-bg-secondary); /* Le fond des cartes */
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    border: 1px solid var(--color-card-bg); /* Bordure lÃ©gÃ¨re */
+    border-top: 5px solid var(--color-card-bg); 
+}
+
+.document-item:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    border-top-color: var(--color-accent-cyan); /* Survol en vert vif */
+}
+
+.document-content-wrapper {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.document-tag {
+    /* Utilise le style des tags d'article */
+    background-color: var(--color-accent-cyan);
+    color: var(--color-dark-blue); 
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+    align-self: flex-start; /* Ne prend que la largeur nÃ©cessaire */
+}
+
+.document-item h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6em;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    color: var(--color-light);
+}
+
+.document-summary {
+    color: #ccc;
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1; 
+}
+
+/* --- MÃ©tadonnÃ©es et Bouton --- */
+.document-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-card-bg); 
+    padding-top: 15px;
+    font-size: 0.9em;
+    margin-top: auto; 
+}
+
+.document-date {
+    color: #888;
+}
+
+.document-date i {
+    margin-right: 5px;
+    color: var(--color-accent-cyan);
+}
+
+/* Style spÃ©cifique au bouton de tÃ©lÃ©chargement */
+.btn-download {
+    background-color: var(--color-accent-cyan);
+    color: var(--color-dark-blue) !important;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.btn-download:hover {
+    background-color: var(--color-light); /* Changement de couleur au survol */
+}
+
+.btn-download i {
+    margin-right: 5px;
+}
+
+/* ----------------------------------------------------------- */
+/* 11. PAGE ARTICLE INDIVIDUEL (article_detail.php)             */
+/* ----------------------------------------------------------- */
+
+.article-full {
+    /* Largeur maximale ajustÃ©e. On passe de 900px Ã  800px pour une meilleure ligne de lecture */
+    max-width: 800px; 
+    margin: 50px auto 100px;
+    padding: 0 40px; /* Ajout d'un padding horizontal pour les petits Ã©crans */
+    background-color: var(--color-charcoal); 
+}
+
+/* --- En-tÃªte de l'Article --- */
+.article-header {
+    padding-bottom: 30px;
+    border-bottom: 3px solid var(--color-accent-cyan);
+    margin-bottom: 40px;
+    /* On retire le 'text-align: center' pour le contenu et on le centre uniquement sur le titre/meta */
+    text-align: center;
+}
+
+.article-title {
+    font-family: var(--font-heading);
+    font-size: 2.8em; /* LÃ©gÃ¨rement rÃ©duit pour amÃ©liorer la mise en page */
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: var(--color-light);
+}
+
+.article-meta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 0.95em;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* --- Contenu Principal de l'Article --- */
+.article-content {
+    font-size: 1.1em;
+    line-height: 1.7; /* LÃ©gÃ¨rement augmentÃ© pour aÃ©rer les lignes */
+    color: var(--color-light);
+    
+    /* ð CORRECTION MAJEURE : On force l'alignement Ã  gauche pour un bloc de texte normal */
+    text-align: left; 
+}
+
+.article-content p {
+    margin-bottom: 2em; /* Augmentation de l'espace aprÃ¨s chaque paragraphe */
+    text-align: justify; /* Justification pour un aspect professionnel et propre */
+    color: #ccc;
+    
+    /* Retirer l'indentation qui peut surcharger la lecture */
+    text-indent: 0; 
+}
+
+.article-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6em; /* LÃ©gÃ¨rement rÃ©duit */
+    margin-top: 2em; /* Augmentation de l'espace avant le titre de section */
+    margin-bottom: 1em;
+    color: var(--color-accent-cyan);
+    
+    /* ð Ajout d'une ligne de dÃ©marcation pour les sous-titres */
+    border-bottom: 1px solid var(--color-bg-secondary);
+    padding-bottom: 5px;
+}
+
+/* Correction pour les listes (si vous les utilisez) */
+.article-content ul, .article-content ol {
+    margin-bottom: 2em;
+    padding-left: 20px;
+}
+
+
+/* --- Footer (Bouton de retour) --- */
+.article-footer {
+    margin-top: 60px;
+    border-top: 1px solid var(--color-bg-secondary);
+    padding-top: 20px;
+    text-align: center;
+}
+
+/* --- RESPONSIVE : Correction pour les petits Ã©crans --- */
+@media (max-width: 600px) {
+    .article-full {
+        /* Plus de padding pour ne pas coller les bords */
+        padding: 0 15px; 
+        margin: 30px auto 60px;
+    }
+    .article-title {
+        font-size: 2em;
+    }
+}
+
+/* ----------------------------------------------------------- */
+/* 10.5. NAVIGATION DE PAGINATION (UtilisÃ©e dans articles.php)  */
+/* ----------------------------------------------------------- */
+
+.pagination-nav {
+    margin-top: 60px;
+    padding-top: 20px;
+    text-align: center;
+    border-top: 1px solid var(--color-bg-secondary);
+}
+
+.pagination {
+    list-style: none;
+    display: inline-flex; /* Affiche les Ã©lÃ©ments en ligne */
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-card-bg); /* Un fond lÃ©gÃ¨rement plus clair que le gÃ©nÃ©ral */
+    border-radius: 5px;
+    overflow: hidden; /* Assure que les liens ne dÃ©passent pas les coins */
+}
+
+.page-item {
+    margin: 0;
+}
+
+.page-link {
+    display: block;
+    padding: 10px 15px;
+    color: var(--color-light); /* Texte clair par dÃ©faut */
+    background-color: var(--color-card-bg);
+    border-right: 1px solid var(--color-bg-secondary); /* SÃ©parateur lÃ©ger */
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 600;
+}
+
+.page-link:hover {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-accent-cyan);
+}
+
+/* Style de la page active (le chiffre en cours, comme le '1') */
+.page-item.active .page-link {
+    background-color: var(--color-accent-cyan); /* Le fond vert vif */
+    color: var(--color-dark-blue); /* Texte sombre sur fond vert vif */
+    pointer-events: none; /* DÃ©sactive le clic sur la page active */
+    font-weight: bold;
+}
+
+/* Style des boutons PrÃ©cÃ©dent/Suivant */
+.page-item:first-child .page-link,
+.page-item:last-child .page-link {
+    color: var(--color-accent-cyan);
+    background-color: var(--color-dark-blue);
+}
+
+.page-item:last-child .page-link {
+    border-right: none; /* Supprime le sÃ©parateur sur le dernier Ã©lÃ©ment */
+}
+
+/* ----------------------------------------------------------- */
+/* 11. PAGE EXPERTISE (expertise.php)     */
+/* ----------------------------------------------------------- */
+
+.expertise-details-section {
+    padding-top: 50px;
+    background-color: var(--color-charcoal);
+}
+
+/* --- Groupes de Domaines --- */
+.expertise-domain-group {
+    margin-bottom: 80px;
+    padding-bottom: 40px;
+    border-bottom: 2px dashed #1A2E44; /* SÃ©parateur subtil */
+}
+
+.expertise-domain-group:last-child {
+    border-bottom: none; /* Pas de sÃ©parateur sur le dernier groupe */
+}
+
+.domain-title {
+    font-family: var(--font-heading);
+    font-size: 2em;
+    color: var(--color-light);
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 3px solid var(--color-accent-cyan);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 600px;
+}
+
+/* --- Grille des Services --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.expertise-card {
+    background-color: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    border-top: 3px solid transparent;
+}
+
+.expertise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border-top-color: var(--color-accent-cyan);
+}
+
+.expertise-card i {
+    /* Reprendre les styles de lueur pour les icÃ´nes */
+    font-size: 2.5em;
+    color: var(--color-accent-cyan);
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(100, 255, 218, 0.6), 0 0 20px rgba(100, 255, 218, 0.4); 
+}
+
+.expertise-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3em;
+    color: var(--color-light);
+    margin-bottom: 10px;
+}
+
+.expertise-card p {
+    color: #ccc;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/* --- BanniÃ¨re CTA --- */
+.cta-banner {
+    background-color: var(--color-bg-secondary);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 50px;
+    border: 1px solid var(--color-accent-cyan);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+}
+
+.cta-banner .cta-title {
+    color: var(--color-accent-cyan);
+    font-size: 2em;
+    margin-bottom: 15px;
+    font-family: var(--font-heading);
+}
+
+.cta-banner p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+/* --- RESPONSIVE : Expertise --- */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .domain-title {
+        font-size: 1.6em;
+    }
+}
+
+/* ----------------------------------------------------------- */
+/* 12. PAGE Ã PROPOS (about.php)              */
+/* ----------------------------------------------------------- */
+
+.about-content-section {
+    padding-top: 50px;
+    background-color: var(--color-bg-secondary);
+}
+
+.sub-title {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    color: var(--color-accent-cyan);
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 20px;
+}
+
+/* --- Section Histoire (Image/Texte) --- */
+.story-container {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+}
+
+.story-grid {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.story-text {
+    width: 60%;
+    line-height: 1.7;
+    font-size: 1.1em;
+}
+
+.story-text p {
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.story-text p:first-child {
+    font-weight: bold;
+    color: var(--color-light);
+}
+
+.story-photo {
+    width: 40%;
+    border-radius: 8px;
+    overflow: hidden;
+    /* Ajoutez l'effet luminaire sur la photo ici si dÃ©sirÃ© */
+    box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
+}
+
+.story-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* --- Section Valeurs --- */
+.values-container {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding-top: 40px;
+    border-top: 1px solid #334455;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.value-card {
+    background-color: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    border-bottom: 4px solid var(--color-accent-cyan);
+    transition: background-color 0.3s;
+}
+
+.value-card i {
+    font-size: 3em;
+    color: var(--color-accent-cyan);
+    margin-bottom: 15px;
+}
+
+.value-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.value-card p {
+    color: #aaa;
+}
+
+/* --- Responsive pour Ã Propos --- */
+@media (max-width: 900px) {
+    .story-grid {
+        flex-direction: column;
+    }
+    .story-text,
+    .story-photo {
+        width: 100%;
+    }
+    .story-photo {
+        order: -1; /* Place l'image avant le texte sur mobile */
+        margin-bottom: 30px;
+    }
+}
+
+/* ----------------------------------------------------------- */
+/* 13. PAGES LÃGALES (legal.php & privacy.php) */
+/* ----------------------------------------------------------- */
+
+.legal-content-section {
+    padding-top: 50px;
+    padding-bottom: 80px;
+    background-color: var(--color-charcoal);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.legal-article {
+    margin-bottom: 50px;
+    padding: 30px;
+    background-color: var(--color-bg-secondary);
+    border-left: 5px solid var(--color-accent-cyan);
+    border-radius: 5px;
+}
+
+.legal-article h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6em;
+    color: var(--color-light);
+    margin-bottom: 15px;
+    border-bottom: 1px solid #334455;
+    padding-bottom: 10px;
+}
+
+.legal-article p {
+    line-height: 1.7;
+    color: #ccc;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+.legal-article strong {
+    color: var(--color-light);
+}
+
+/* Style spÃ©cifique pour le bouton CTA en bas de page */
+.cta-section {
+    margin-top: 50px;
+    border-top: 1px solid #334455;
+    padding-top: 40px;
+}
+
+/* ----------------------------------------------------------- */
+/* 14. PAGE PLAN DU SITE (sitemap.php) */
+/* ----------------------------------------------------------- */
+
+.sitemap-content-section {
+    padding-top: 50px;
+    padding-bottom: 80px;
+    background-color: var(--color-charcoal);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sitemap-grid {
+    display: grid;
+    /* 3 colonnes de taille Ã©gale par dÃ©faut */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px 30px;
+    margin-top: 40px;
+}
+
+.sitemap-column h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    color: var(--color-accent-cyan);
+    border-bottom: 2px solid var(--color-bg-secondary);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.sitemap-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sitemap-list li {
+    margin-bottom: 8px;
+    font-size: 1.05em;
+    padding-left: 15px; /* Pour l'espace de l'icÃ´ne virtuelle */
+    position: relative;
+}
+
+.sitemap-list li::before {
+    content: "\f054"; /* IcÃ´ne Font Awesome 'chevron-right' */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--color-accent-cyan);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 0.8em;
+}
+
+.sitemap-list a {
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.sitemap-list a:hover {
+    color: var(--color-light);
+    text-decoration: underline;
+}
+
+.sub-item {
+    font-style: italic;
+    font-size: 0.95em;
+    margin-left: 20px;
+    color: #888;
+}
+
+.sub-item::before {
+    content: "\f111"; /* IcÃ´ne de cercle */
+    font-size: 0.5em;
+    top: 6px;
+}
+
+/* Style spÃ©cifique pour la colonne pleine largeur des articles */
+.full-width {
+    grid-column: 1 / -1; /* S'Ã©tend sur toutes les colonnes */
+    margin-top: 30px;
+}
+
+.sitemap-list.horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 30px;
+}
+.sitemap-list.horizontal li {
+    flex: 1 1 30%; /* Permet aux liens d'occuper environ 30% de l'espace */
+    min-width: 250px;
+}
+
+
+/* --- RESPONSIVE : Sitemap --- */
+@media (max-width: 768px) {
+    .sitemap-grid {
+        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+    }
+    .sitemap-column {
+        padding-bottom: 20px;
+        border-bottom: 1px dashed #1A2E44;
+    }
+    .sitemap-list.horizontal {
+        flex-direction: column;
+        gap: 0;
+    }
+    .sitemap-list.horizontal li {
+        flex: auto;
+    }
+}
